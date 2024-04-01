@@ -1,3 +1,4 @@
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -7,33 +8,34 @@ import os
 import glob
 import seaborn as sns
 
-dir = '/content/ESS'
+dir = './content/'
 listdir = os.listdir(dir)
 
 print(listdir)
 print("The number of dataset :", len(listdir))
 
 num = ['B05', 'B07', 'B18', 'B33', 'B34', 'B46', 'B47', 'B48']
-for i in range(len(listdir)):
+for i in range(len(num)):
     vector = np.zeros((1,3))
-    path = os.path.join(os.getcwd(), '/content/ESS', num[i] + '_discharge_soh.csv')
+    path = os.path.join(os.getcwd(), './content/', num[i] + '_discharge_soh.csv')
     csv = pd.read_csv(path)
     df = pd.DataFrame(csv)
     
     vec = df[['cycle', 'capacity', 'SOH']]
     
+    # Store vec in the global namespace
     globals()['data_{}'.format(num[i])] = vec
 
-data = pd.read_csv('/content/ESS/B05_discharge_soh.csv')
-df = pd.DataFrame(data)
-df
-
-data_B05
-
-for i in range(len(listdir)):
+for i in range(len(num)):
     print("Shape of data :", np.shape(globals()['data_{}'.format(num[i])]))
 
+data = pd.read_csv('./content//B05_discharge_soh.csv')
+df = pd.DataFrame(data)
+df
+for i in range(len(num)):
+    print("Shape of data :", np.shape(globals()['data_{}'.format(num[i])]))
 
+data_B05
 
 for i in range(len(listdir)) :
 
@@ -48,7 +50,7 @@ for i in range(len(listdir)) :
     plt.ylabel('SoH', fontsize = 15)
     plt.xlabel('cycle', fontsize = 15)
     plt.title('Discharge_' + num[i], fontsize = 15)
-    plt.savefig('/content/ESS_PICS1' + num[i] + '.jpg')
+    plt.savefig('./content/_PICS1' + num[i] + '.jpg')
     plt.show()
 
 
@@ -68,7 +70,7 @@ plt.legend(prop={'size': 16})
 plt.ylabel('SoH', fontsize = 15)
 plt.xlabel('Discharge cycle', fontsize = 15)
 plt.title('SoH of group A', fontsize = 15)
-plt.savefig('/content/ESS_PICS1/A_group.jpg')
+plt.savefig('./content/_PICS1/A_group.jpg')
 plt.show()
 
 
@@ -86,7 +88,7 @@ plt.legend(prop={'size': 16})
 plt.ylabel('SoH', fontsize = 15)
 plt.xlabel('Discharge cycle', fontsize = 15)
 plt.title('SoH of group B', fontsize = 15)
-plt.savefig('/content/ESS_PICS1/B_group.jpg')
+plt.savefig('./content/_PICS1/B_group.jpg')
 plt.show()
 
 
@@ -105,5 +107,5 @@ plt.legend(prop={'size': 16})
 plt.ylabel('SoH', fontsize = 15)
 plt.xlabel('Discharge cycle', fontsize = 15)
 plt.title('SoH of group C', fontsize = 15)
-plt.savefig('/content/ESS_PICS1/C_group.jpg')
+plt.savefig('./content/_PICS1/C_group.jpg')
 plt.show()
