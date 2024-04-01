@@ -8,7 +8,7 @@ import math
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 
 
-file_path = './content/B05_discharge_soh_2.csv'
+file_path = './content/B05_discharge_soh.csv'
 dataset = pd.read_csv(file_path)
 
 # Preparing the dataset for Linear Regression
