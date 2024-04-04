@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+import uvicorn
 from uvicorn import Server
 from Backend import predict
 from fastapi.middleware.cors import CORSMiddleware
@@ -31,4 +32,4 @@ async def read_prediction(model: str, battery: str, cycle: str):
 
 
 if __name__ == "__main__":
-    run("Apis:app", host="localhost", port=8000, reload=True)
+    uvicorn.run("Apis:app", host="localhost", port=8000, reload=True)
