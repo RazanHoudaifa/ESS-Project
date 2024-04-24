@@ -84,7 +84,7 @@ def LTSM(battery, cycle):
     return predict.tolist()
 
 
- def linear(battery, cycle):
+def linear(battery, cycle):
     batteries = ['B05', 'B07', 'B18', 'B33', 'B34', 'B46', 'B47', 'B48']
     file_path = './content/' + batteries[battery - 1] + '_discharge_soh.csv'
     dataset = pd.read_csv(file_path)
